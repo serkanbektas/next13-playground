@@ -1,10 +1,12 @@
+import { PrismaClient } from '@prisma/client';
+import { wait } from '../../../util/time';
+
 import IssueDetails from './IssueDetails';
 
 async function IssueDetailsPage({ params }) {
-
-  const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${params.issueId}`);
-  const issue = await res.json();
-
+  const prisma = new PrismaClient();
+  const issue = await prisma.issue.findFirst({ where: { id: +params.issueId } });
+  // await wait(3);
   if (!issue) {
     throw new Error('Issue not found!')
   }

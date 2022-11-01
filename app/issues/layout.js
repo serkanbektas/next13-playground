@@ -1,9 +1,11 @@
+import { PrismaClient } from '@prisma/client';
+
 import IssuesList from './IssueList';
 import classes from './layout.module.css';
 
 async function IssuesLayout({ children }) {
-    const res = await fetch('https://jsonplaceholder.typicode.com/todos');
-    const issues = await res.json();
+  const prisma = new PrismaClient();
+  const issues = await prisma.issue.findMany();
 
   return (
     <div className={classes.layout}>

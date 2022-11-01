@@ -13,7 +13,7 @@ function MainNavigation() {
           <Link href="/issues">Issues</Link>
         </li>
         <li>
-          <Link href="/users">Users</Link>
+          <Link href="/todos">Todos</Link>
         </li>
       </ul>
     </nav>
